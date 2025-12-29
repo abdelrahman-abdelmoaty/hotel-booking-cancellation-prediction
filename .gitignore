@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data files
+*.csv
+*.parquet
+*.json
+data/*.csv
+!data/.gitkeep
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reports (generated files)
+reports/figures/*.png
+reports/figures/*.jpg
+reports/*.csv
+!reports/.gitkeep
+
+# MongoDB connection strings (sensitive)
+*.env
+config/secrets.json
+
+# Colab
+/content/
+/drive/
+
+# Model artifacts (if large)
+models/*.pkl
+models/*.joblib
+*.model
+
+# Logs
+*.log
+logs/
+
