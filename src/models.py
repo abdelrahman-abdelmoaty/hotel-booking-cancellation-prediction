@@ -5,7 +5,7 @@ This module provides wrapper functions for training and evaluating
 ML models using PySpark MLlib.
 """
 
-from pyspark.ml.classification import LogisticRegression, NaiveBayes, DecisionTreeClassifier, RandomForestClassifier
+from pyspark.ml.classification import NaiveBayes, DecisionTreeClassifier
 from pyspark.ml.evaluation import BinaryClassificationEvaluator, MulticlassClassificationEvaluator
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import VectorAssembler, StringIndexer, Imputer, StandardScaler
@@ -54,28 +54,6 @@ def prepare_spark_dataframe(spark, df, target_col='is_canceled'):
     return spark_df
 
 
-def train_logistic_regression(train_df, features_col='features', label_col='is_canceled'):
-    """
-    Train Logistic Regression model.
-    
-    Args:
-        train_df (pyspark.sql.DataFrame): Training data
-        features_col (str): Name of features column
-        label_col (str): Name of label column
-    
-    Returns:
-        LogisticRegressionModel: Trained model
-    """
-    lr = LogisticRegression(
-        featuresCol=features_col,
-        labelCol=label_col,
-        maxIter=100
-    )
-    
-    model = lr.fit(train_df)
-    return model
-
-
 def train_naive_bayes(train_df, features_col='features', label_col='is_canceled'):
     """
     Train Naive Bayes model.
@@ -118,33 +96,6 @@ def train_decision_tree(train_df, features_col='features', label_col='is_cancele
     )
     
     model = dt.fit(train_df)
-    return model
-
-
-def train_random_forest(train_df, features_col='features', label_col='is_canceled', 
-                       num_trees=100, max_depth=10):
-    """
-    Train Random Forest model.
-    
-    Args:
-        train_df (pyspark.sql.DataFrame): Training data
-        features_col (str): Name of features column
-        label_col (str): Name of label column
-        num_trees (int): Number of trees
-        max_depth (int): Maximum depth of trees
-    
-    Returns:
-        RandomForestClassificationModel: Trained model
-    """
-    rf = RandomForestClassifier(
-        featuresCol=features_col,
-        labelCol=label_col,
-        numTrees=num_trees,
-        maxDepth=max_depth,
-        impurity='gini'
-    )
-    
-    model = rf.fit(train_df)
     return model
 
 
