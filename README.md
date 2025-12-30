@@ -65,7 +65,6 @@ If you want to use MongoDB (notebook 01):
 ```
 big-data/
 ├── notebooks/          # Jupyter notebooks (run in order 01-05)
-├── src/               # Python utility modules
 ├── app/               # Streamlit web application
 │   └── streamlit_app.py
 ├── data/              # Dataset and processed data
