@@ -53,6 +53,9 @@ config/secrets.json
 models/*.pkl
 models/*.joblib
 *.model
+models/naive_bayes_model/
+models/decision_tree_model/
+models/naive_bayes_scaler/
 
 # Logs
 *.log

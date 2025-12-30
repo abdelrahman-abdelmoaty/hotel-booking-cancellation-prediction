@@ -33,6 +33,7 @@ jupyter notebook
 ```
 
 **In Jupyter:**
+
 1. Select kernel: **Python (big-data)** (top-right dropdown)
 2. Run notebooks in order:
    - `01_data_ingestion_mongodb.ipynb` (optional - skip if not using MongoDB)
@@ -65,7 +66,10 @@ If you want to use MongoDB (notebook 01):
 big-data/
 ├── notebooks/          # Jupyter notebooks (run in order 01-05)
 ├── src/               # Python utility modules
+├── app/               # Streamlit web application
+│   └── streamlit_app.py
 ├── data/              # Dataset and processed data
+├── models/            # Saved ML models (created after running 04_ml_models.ipynb)
 ├── reports/           # Generated visualizations and reports
 ├── requirements.txt   # Python dependencies
 └── README.md         # This file
@@ -84,9 +88,40 @@ big-data/
 - **Naive Bayes** - Probabilistic classifier
 - **Decision Tree** - Rule-based classifier
 
+## Streamlit Web Interface
+
+An interactive web interface is available to explore model performance and make predictions.
+
+### Running the Streamlit App
+
+```bash
+# Activate environment
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Run Streamlit app
+streamlit run app/streamlit_app.py
+```
+
+The app will open in your browser at `http://localhost:8501`
+
+### Features
+
+- **📊 Model Performance**: View detailed metrics and comparisons
+- **🔮 Make Prediction**: Test the models with custom booking inputs
+- **📈 Data Exploration**: Explore the dataset and statistics
+- **ℹ️ About**: Project information and documentation
+
+### Note
+
+For full prediction functionality:
+
+1. Run `04_ml_models.ipynb` to train and save the models
+2. Models will be saved to `models/` directory
+3. The Streamlit app will load these models for predictions
+
 ## Technologies
 
-- Python 3.x, PySpark, MongoDB Atlas, Pandas, NumPy, Matplotlib, Seaborn, Plotly, Scikit-learn
+- Python 3.x, PySpark, MongoDB Atlas, Pandas, NumPy, Matplotlib, Seaborn, Plotly, Scikit-learn, Streamlit
 
 ## Troubleshooting
 

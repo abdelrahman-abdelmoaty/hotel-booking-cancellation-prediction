@@ -35,6 +35,13 @@ Hotel Booking Cancellation Prediction/
 │   │   ├── interactive_metrics_comparison.html
 │   │   └── [other figures when available]
 │   └── model_metrics_final.csv               # Final metrics for report
+├── models/                                   # Saved ML models (created after training)
+│   ├── naive_bayes_model/
+│   ├── decision_tree_model/
+│   └── naive_bayes_scaler/
+├── app/                                      # Streamlit web application
+│   ├── streamlit_app.py                      # Interactive web interface
+│   └── README.md
 ├── src/                                      # Source code modules
 │   ├── data_loader.py
 │   ├── preprocessing.py
@@ -94,6 +101,7 @@ Hotel Booking Cancellation Prediction/
   - Implemented proper data scaling for Naive Bayes (MinMaxScaler to [0, 1] range)
   - Evaluated models using BinaryClassificationEvaluator and MulticlassClassificationEvaluator
   - Saved model metrics to CSV for reporting
+  - Saved trained models to `models/` directory for later use (Naive Bayes, Decision Tree, and scaler)
 
 ### 5. Machine Learning Models
 
@@ -127,6 +135,19 @@ Trained and compared two different models using PySpark MLlib:
   - Feature importance analysis
   - Interactive Plotly visualizations
   - All figures saved to `reports/figures/` directory
+
+### 7. Interactive Web Interface (Streamlit App: `app/streamlit_app.py`)
+
+- **Web Application Features**:
+  - **Model Performance Dashboard**: View detailed metrics, comparisons, and visualizations
+  - **Prediction Interface**: Test models with custom booking inputs or select from example bookings
+  - **Example Bookings**: Pre-configured examples including:
+    - High Cancellation Risk (long lead time, previous cancellations)
+    - Low Cancellation Risk (short lead time, returning guest)
+    - Corporate Booking
+    - Family Vacation
+  - **Real-time Predictions**: Heuristic-based cancellation risk assessment with factor analysis
+  - User-friendly interface with intuitive navigation
 
 ## Output and Results
 
@@ -210,6 +231,15 @@ Trained and compared two different models using PySpark MLlib:
 - `feature_importance.png`: Decision Tree feature importance plot (if available)
 - `interactive_metrics_comparison.html`: Interactive Plotly visualization (open in browser)]
 
+#### 6. Streamlit Web Interface
+
+[Insert screenshots of:
+
+- Streamlit app home page
+- Model Performance page showing metrics and visualizations
+- Make Prediction page with example bookings dropdown
+- Prediction results showing cancellation risk and contributing factors]
+
 ### MongoDB Queries Demonstrated
 
 [Include screenshots/examples of MongoDB aggregation queries:
@@ -240,16 +270,23 @@ Trained and compared two different models using PySpark MLlib:
    - ROC curves comparison (when available)
    - Feature importance analysis (when available)
    - All visualizations automatically saved to `reports/figures/`
-4. **Performance Optimization**:
+4. **Interactive Web Interface (Streamlit)**:
+   - User-friendly web application for exploring model performance
+   - Real-time prediction interface with example bookings
+   - Factor-based cancellation risk assessment
+   - Responsive design with multiple pages
+5. **Performance Optimization**:
    - Spark caching for faster access
    - MongoDB indexing for efficient queries
    - Parquet format for efficient data storage and loading
-5. **Data Pipeline**: End-to-end pipeline from MongoDB → CSV → Spark → ML → Evaluation
-6. **Feature Engineering**: 5 engineered features + 28 total features (18 numerical + 10 categorical)
-7. **Robust Data Handling**:
+   - Model persistence for reuse
+6. **Data Pipeline**: End-to-end pipeline from MongoDB → CSV → Spark → ML → Evaluation → Web Interface
+7. **Feature Engineering**: 5 engineered features + 28 total features (18 numerical + 10 categorical)
+8. **Robust Data Handling**:
    - Proper handling of 'NA' strings in CSV
    - Missing value imputation with column means
    - Safe type casting using try_cast
+9. **Model Persistence**: Trained models saved for deployment and reuse
 
 ## Challenges and Solutions
 
@@ -274,6 +311,7 @@ Trained and compared two different models using PySpark MLlib:
 - **Pandas & NumPy**: Data manipulation and analysis
 - **Matplotlib & Seaborn**: Static visualizations
 - **Plotly**: Interactive visualizations
+- **Streamlit**: Web application framework for interactive interfaces
 - **Jupyter Notebooks**: Interactive development environment
 
 ## References
@@ -306,6 +344,13 @@ Trained and compared two different models using PySpark MLlib:
 3. **File Paths**: All paths in the notebooks use relative paths from the `notebooks/` directory. Make sure to run notebooks from the correct directory.
 
 4. **Colab References Removed**: All Colab-specific paths and references have been removed. The project now uses local paths.
+
+5. **Streamlit App**: To run the interactive web interface:
+   ```bash
+   source venv/bin/activate
+   streamlit run app/streamlit_app.py
+   ```
+   The app will open at `http://localhost:8501`
 
 ---
 
